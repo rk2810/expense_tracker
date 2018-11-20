@@ -19,13 +19,13 @@ class Expense(models.Model):
     paid_to = models.CharField(max_length=250)
     amount = models.IntegerField()
     comment = models.TextField()
-    currency = models.ForeignKey('Currency', on_delete=models.SET_NULL)
+    currency = models.ForeignKey('Currency', on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
     flag = models.CharField(max_length=10, choices=EXPENSE_TYPE, default='credit')
 
     class Meta:
-        ordering = ('-created_at')
+        ordering = ('-created_at',)
 
     def __str__(self):
         return self.title
