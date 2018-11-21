@@ -6,7 +6,7 @@ from datetime import timedelta, datetime
 class Currency(models.Model):
     name = models.CharField(max_length=250)
     symbol = models.CharField(max_length=10)
-    flag = models.IntegerField(default=1)
+    flag = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
@@ -39,6 +39,7 @@ class UserCategory(models.Model):
 class Account(models.Model):
     COLORS_AVAILABLE = (('Red', 'red'), ('Blue', 'blue'), ('Green', 'green'))
     color = models.CharField(max_length=10, choices=COLORS_AVAILABLE, default='Red')
+    name = models.CharField(max_length=250, null=True)
     description = models.CharField(max_length=200, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
