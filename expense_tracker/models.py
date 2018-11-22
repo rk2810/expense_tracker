@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 from datetime import timedelta, datetime
 
 
+class PublicStuff(models.Manager):     # Custom manager for public categories and accounts
+    def get_queryset(self):
+        return super(PublicStuff, self).get_queryset().filter(public=True)
+
+
 class Currency(models.Model):
     name = models.CharField(max_length=250)
     symbol = models.CharField(max_length=10)
@@ -18,6 +23,8 @@ class Category(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     public = models.BooleanField(default=False)
+    objects = models.Manager()  # The default manager.
+    public_stuff = PublicStuff()  # Our custom manager.
 
     class Meta:
         ordering = ('-created_at',)
@@ -44,6 +51,8 @@ class Account(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     public = models.BooleanField(default=False)
+    objects = models.Manager()  # The default manager.
+    public_stuff = PublicStuff()  # Our custom manager.
 
     class Meta:
         ordering = ('-created_at',)
