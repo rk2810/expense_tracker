@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+</head>
+<body>
+<table border="2px">
+    <th>Categories</th>
+    <th>Icon</th>
+    {%  for cat in categories %}
+        <tr>
+    <td>{{ cat.name }}</td>
+            {{ cat.icon }}
+            <td><img src="{{ cat.icon }}" alt="category"></td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

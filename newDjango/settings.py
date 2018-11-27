@@ -119,4 +119,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '../expense_tracker/static/'
+# STATIC_ROOT = "../expense_tracker/static/"
+# STATICFILES_DIRS = ( os.path.join(os.path.dirname(__file__),'../expense_tracker/static/'),)

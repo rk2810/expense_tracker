@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from expense_tracker.views import transaction_list, categories_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('transactions/', transaction_list, name='transactions'),
+    path('categories/', categories_list, name='categories'),
 ]
+
